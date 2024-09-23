@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>INST377 - Lab 4</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1 id="ourHeader">INST377 - Lab 4</h1>
+
+        <div class="main-container">
+            <div class="content-area">
+                <!-- Name form -->
+                <div class="content-box">
+                    <form name="name-form" onsubmit="hiName()">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="form-name" required>
+                        <input type="submit" value="Alert Me!">
+                    </form>
+                </div>
+
+                <!-- Change Color button -->
+                <div class="content-box">
+                    <button onclick="changeColor()">Change Color</button>
+                </div>
+
+                <!-- Text Tester form -->
+                <div class="content-box">
+                    <form id="text-tester-form" onsubmit="return(validate())">
+                        <label for="text-tester">Text Tester:</label>
+                        <input type="text" name="text-tester" id="text-tester">
+                        <input type="submit" value="Validate Text" >
+                    </form>
+                </div>
+
+                <!-- Add Text button -->
+                <div class="content-box">
+                    <button onclick="addText()">Add Text</button>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function hiName() {
+                var name = document.getElementById("form-name").value;
+                alert ("Hi " + name + "!");
+                return true;
+            }
+            function changeColor() {
+                if (document.body.style.backgroundColor == 'burlywood') {
+                    document.body.style.backgroundColor = 'antiquewhite'
+                } else {
+                    document.body.style.backgroundColor = 'burlywood'
+                }
+            }
+            function validate() {
+                var validation = /[!@#$%^&*()_+\[\]{};':"\\|,.<>\/?]+/;
+                var testValue = document.getElementById("text-tester").value
+                if (validation.test(testValue)) {
+                    alert('Text invalid')
+                    return false;
+                }
+                return true;
+            }
+            function addText() {
+                document.getElementById("ourHeader").textContent += " Add Text"
+            }
+        </script>
+    </body>
+</html>
